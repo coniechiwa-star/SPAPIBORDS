@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212">
+  <title>SPAPIBORDS</title>
+  <link rel="icon" type="image/png" href="spotify-icon.jpg" class="logo">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="brand" href="#" data-page="home">
+      <span class="brand-mark">🎶</span> SPAPIBORDS
+    </a>
+
+    <nav class="main-nav">
+      <button class="nav-link active" data-page="home">⌂ Home</button>
+      <button class="nav-link" data-page="search">⌕ Search</button>
+      <button class="nav-link" data-page="library">▤ Your Library</button>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">YOUR COLLECTION</p>
+
+    <button class="playlist-link" data-page="library">＋ Create playlist</button>
+
+    <div class="sidebar-bottom">
+      <div class="school-brand">🎤</div>
+      <div>
+        <strong>SPAPIBORDS</strong>
+        <small>Music extension</small>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <div class="history-buttons">
+        <button>‹</button>
+        <button>›</button>
+      </div>
+
+      <label class="search-box">
+        <span>⌕</span>
+        <input id="searchInput" type="search"
+          placeholder="What do you want to play?">
+      </label>
+
+      <button class="profile-button">🎵</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="homePage" class="page active-page">
+
+      <div class="welcome-banner">
+        <p class="eyebrow">YOUR MUSIC, YOUR BAI</p>
+        <h1>Will Come.💦</h1>
+        <p>Find a track, press play, and enjoy the moment.</p>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MADE FOR YOU</p>
+          <h2>Featured tracks</h2>
+        </div>
+      </div>
+
+      <div id="trackGrid" class="track-grid"></div>
+    </section>
+
+    <!-- SEARCH -->
+    <section id="searchPage" class="page">
+      <p class="eyebrow">DISCOVER</p>
+      <h1>Search</h1>
+      <p class="muted">Search by song title or artist name.</p>
+      <div id="searchResults" class="track-grid"></div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section id="libraryPage" class="page">
+      <p class="eyebrow">YOUR COLLECTION</p>
+      <h1>Your Library</h1>
+      <p class="muted">All ten tracks in your playlist.</p>
+      <div id="libraryResults" class="track-grid"></div>
+    </section>
+
+    <!-- SONG DETAILS -->
+    <section id="trackPage" class="page track-page">
+
+      <div class="track-hero">
+        <img id="detailCover"
+          class="detail-cover"
+          src="photos/paraluman.png"
+          alt="Album cover">
+
+        <div class="track-heading">
+          <p class="eyebrow">NOW PLAYING</p>
+          <h1 id="detailTitle">Paraluman</h1>
+          <p id="detailArtist" class="muted">Adie</p>
+          <button id="detailPlay" class="primary-button">▶ Play</button>
+        </div>
+      </div>
+
+      <!-- ARTIST PROFILE -->
+      <section class="artist-profile">
+        <img id="artistImage"
+          src="ghostbg.jpg"
+          alt="Artist profile">
+
+        <div class="artist-copy">
+          <p class="eyebrow">ARTIST PROFILE</p>
+          <h2 id="artistName">Adie</h2>
+          <p id="artistBio" class="muted">
+            Artist biography goes here.
+          </p>
+        </div>
+      </section>
+
+      <!-- LYRICS -->
+      <section class="lyrics-section">
+        <div class="lyrics-heading">
+          <div>
+            <p class="eyebrow">SING ALONG</p>
+            <h2>Lyrics</h2>
+          </div>
+          <span class="live-dot">● SYNCED</span>
+        </div>
+
+        <div id="lyricsBox" class="lyrics-box">
+          <p class="empty-lyrics">
+            Add your lyrics and timestamps in script.js.
+          </p>
+        </div>
+      </section>
+
+      <!-- RELATED SONGS -->
+      <section class="related-section">
+        <h2>More in your playlist</h2>
+        <div id="relatedTracks" class="related-list"></div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- BOTTOM MUSIC PLAYER -->
+  <footer class="player">
+
+    <div class="player-track">
+      <img id="playerCover"
+        src="photos/paraluman.png"
+        alt="Current cover">
+
+      <div class="player-track-text">
+        <strong id="playerTitle">Paraluman</strong>
+        <span id="playerArtist">Adie</span>
+      </div>
+
+      <button id="likeButton" class="icon-button">♡</button>
+    </div>
+
+    <div class="player-center">
+      <div class="player-controls">
+        <button id="shuffleButton" class="icon-button">⤨</button>
+        <button id="previousButton" class="icon-button">|‹</button>
+        <button id="playButton" class="play-button">▶</button>
+        <button id="nextButton" class="icon-button">›|</button>
+        <button id="repeatButton" class="icon-button">↻</button>
+      </div>
+
+      <label class="speed-control">
+  Speed
+  <select id="playbackSpeed" aria-label="Playback speed">
+    <option value="0.75">0.75×</option>
+    <option value="1" selected>1×</option>
+    <option value="1.25">1.25×</option>
+    <option value="1.5">1.5×</option>
+    <option value="2">2×</option>
+  </select>
+</label>
+
+      <div class="timeline">
+        <span id="currentTime">0:00</span>
+
+        <input id="progressBar"
+          type="range"
+          min="0"
+          max="100"
+          value="0">
+
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="player-volume">
+      <span>🔊</span>
+      <input id="volumeBar"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.8">
+    </div>
+
+  </footer>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <!-- MOBILE NAVIGATION -->
+  <nav class="mobile-nav">
+    <button data-page="home">⌂<span>Home</span></button>
+    <button data-page="search">⌕<span>Search</span></button>
+    <button data-page="library">▤<span>Library</span></button>
+  </nav>
+
+</body>
+</html>
